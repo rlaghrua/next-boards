@@ -15,7 +15,7 @@ export const Row = tw.div`
   flex flex-row
   h-[52px]
   leading-[52px]
-  border-b-4 border-gray
+  border-b-2 border-gray
   hover:bg-slate-200
   hover:dark:bg-slate-800
 `;

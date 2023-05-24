@@ -1,4 +1,4 @@
-import BoardListUI from "./Boardlist.presenter";
+import BoardListUI from "./BoardList.presenter";
 import { useQuery } from "@apollo/client";
 import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
 import { useRouter } from "next/router";

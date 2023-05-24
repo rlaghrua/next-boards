@@ -5,7 +5,7 @@ import { IBoardDetailUIProps } from "./BoardDetail.types";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
-    <S.Wrapper>
+    <div className="w-[1200px] mx-auto bg-white dark:bg-[#101010] rounded-xl md:w-[800px] lg:w-[1024px] m-[100px]">
       <S.CardWrapper>
         <S.Header>
           <S.AvatarWrapper>
@@ -68,6 +68,6 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <S.Button onClick={props.onClickMoveToBoardEdit}>수정하기</S.Button>
         <S.Button>삭제하기</S.Button>
       </S.BottomWrapper>
-    </S.Wrapper>
+    </div>
   );
 }

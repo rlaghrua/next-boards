@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 import { Rate } from "antd";
+import tw from "tailwind-styled-components";
 
-export const Wrapper = styled.div`
-  width: 1200px;
-  margin: 0px 100px;
+export const Wrapper = tw.div`
+  w-[1200px]
+  mr-[100px]
+  ml-[100px]
+  md:w-[800px] lg:w-[1024px]
 `;
 
 export const PencilIcon = styled.img``;

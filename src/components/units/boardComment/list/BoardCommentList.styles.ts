@@ -1,12 +1,16 @@
 import styled from "@emotion/styled";
 import { Rate, Modal } from "antd";
+import tw from "tailwind-styled-components";
 
-export const ItemWrapper = styled.div`
-  width: 1200px;
-  margin: 0px 100px;
-  padding-top: 20px;
-  height: 128px;
-  border-bottom: 1px solid lightgray;
+export const ItemWrapper = tw.div`
+  w-[1200px]
+  mb-[50px]
+  mr-[100px]
+  ml-[100px]
+  pt-[20px]
+  h-[128px]
+  border-b-2 border-gray
+  md:w-[800px] lg:w-[1024px]
 `;
 
 export const FlexWrapper = styled.div`
