@@ -56,7 +56,7 @@ export default function LoginPage() {
       setAccessToken(accessTokens);
 
       // 3. 로그인 성공 페이지로 이동하기
-      void router.push("/");
+      void router.push("/boards");
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }

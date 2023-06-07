@@ -8,6 +8,10 @@ import {
   IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
 import { MouseEvent, useState } from "react";
+import { withAuth } from "../../../commons/hocs";
+import { accessTokenState } from "../../../../commons/store";
+import { Modal } from "antd";
+import { useRecoilState } from "recoil";
 
 export default function BoardList() {
   const router = useRouter();
@@ -22,12 +26,31 @@ export default function BoardList() {
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT);
 
+  const [accessToken] = useRecoilState(accessTokenState);
+
+  // 모달창
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const handleCancel = () => {
+    setIsOpenModal(false);
+  };
+  const onClickOpenModal = () => {
+    setIsOpenModal(true);
+  };
+
   const onClickMoveToBoardNew = () => {
-    void router.push("/boards/new");
+    if (accessToken) {
+      void router.push("/boards/new");
+    } else {
+      onClickOpenModal();
+    }
   };
 
   const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
-    void router.push(`/boards/${event.currentTarget.id}`);
+    if (accessToken) {
+      void router.push(`/boards/${event.currentTarget.id}`);
+    } else {
+      onClickOpenModal();
+    }
   };
 
   const onChangeKeyword = (value: string) => {
@@ -35,15 +58,29 @@ export default function BoardList() {
   };
 
   return (
-    <BoardListUI
-      data={data}
-      onClickMoveToBoardNew={onClickMoveToBoardNew}
-      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
-      refetch={refetch}
-      refetchBoardsCount={refetchBoardsCount}
-      count={dataBoardsCount?.fetchBoardsCount}
-      keyword={keyword}
-      onChangeKeyword={onChangeKeyword}
-    />
+    <>
+      {isOpenModal && (
+        <Modal
+          visible={true}
+          onOk={() => {
+            router.push("/login");
+          }}
+          onCancel={handleCancel}
+        >
+          <div>로그인 후 이용가능합니다!</div>
+        </Modal>
+      )}
+
+      <BoardListUI
+        data={data}
+        onClickMoveToBoardNew={onClickMoveToBoardNew}
+        onClickMoveToBoardDetail={onClickMoveToBoardDetail}
+        refetch={refetch}
+        refetchBoardsCount={refetchBoardsCount}
+        count={dataBoardsCount?.fetchBoardsCount}
+        keyword={keyword}
+        onChangeKeyword={onChangeKeyword}
+      />
+    </>
   );
 }

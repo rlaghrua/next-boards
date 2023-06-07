@@ -61,6 +61,9 @@ export default function Header() {
             >
               boards
             </span>
+            <Link href="/shops" className="mr-5 hover:text-gray-400">
+              Shop
+            </Link>
             {data?.fetchUserLoggedIn._id ? null : (
               <Link href="/register" className="mr-5 hover:text-gray-400">
                 Signup
@@ -85,7 +88,6 @@ export default function Header() {
               </span>
             )}
           </nav>
-          {/* 다크모드 토글 버튼 작업해야함 */}
           <DarkModeToggleButton />
         </div>
       </header>

@@ -59,10 +59,14 @@ export default function BoardCommentListUIItem(
     setMyPassword(event.target.value);
   };
 
+  const handleCancel = () => {
+    setIsOpenDeleteModal(false);
+  };
+
   return (
     <>
       {isOpenDeleteModal && (
-        <Modal visible={true} onOk={onClickDelete}>
+        <Modal visible={true} onOk={onClickDelete} onCancel={handleCancel}>
           <div>비밀번호 입력: </div>
           <S.PasswordInput type="password" onChange={onChangeDeletePassword} />
         </Modal>
