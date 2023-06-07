@@ -7,7 +7,7 @@ import {
 } from "@apollo/client"; // module 요즘
 import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
 import { useEffect } from "react";
 import { getAccessToken } from "../../../commons/libraries/getAccessToken";
@@ -55,7 +55,7 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   });
 
   const uploadLink = createUploadLink({
-    uri: "http://backendonline.codebootcamp.co.kr/graphql",
+    uri: "https://backendonline.codebootcamp.co.kr/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });

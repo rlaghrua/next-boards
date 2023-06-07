@@ -37,12 +37,16 @@ export default function BoardDetail() {
     void router.push("/boards");
   };
 
+  const onClickModal = () => {
+    Modal.error({ content: "작성자만 수정이 가능합니다." });
+  };
+
   const onClickMoveToBoardEdit = () => {
     if (typeof router.query.boardId !== "string") {
       return;
+    } else {
+      void router.push(`/boards/${router.query.boardId}/edit`);
     }
-
-    void router.push(`/boards/${router.query.boardId}/edit`);
   };
 
   const onClickLike = async () => {
@@ -72,12 +76,14 @@ export default function BoardDetail() {
   };
 
   return (
-    <BoardDetailUI
-      data={data}
-      onClickMoveToBoardList={onClickMoveToBoardList}
-      onClickMoveToBoardEdit={onClickMoveToBoardEdit}
-      onClickLike={onClickLike}
-      onClickDislike={onClickDislike}
-    />
+    <>
+      <BoardDetailUI
+        data={data}
+        onClickMoveToBoardList={onClickMoveToBoardList}
+        onClickMoveToBoardEdit={onClickMoveToBoardEdit}
+        onClickLike={onClickLike}
+        onClickDislike={onClickDislike}
+      />
+    </>
   );
 }

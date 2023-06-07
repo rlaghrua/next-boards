@@ -6,7 +6,7 @@ import tw from "tailwind-styled-components";
 
 export const Wrapper = tw.div`
   w-[1200px]
-  md:w-[800px] lg:w-[1024px]
+  lg:w-[1024px]
   border-solid border-2 border-sky-500;
   m-[100px]
   pt-[80px]

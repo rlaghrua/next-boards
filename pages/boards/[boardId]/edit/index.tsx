@@ -28,7 +28,7 @@ export default function BoardsEditPage() {
   const router = useRouter();
   if (typeof router.query.boardId !== "string") {
     // alert("올바르지 않은 게시글 아이디입니다.");
-    Modal.error({ content: "올바르지 않은 게식르 아이디입니다." });
+    Modal.error({ content: "올바르지 않은 게시글 아이디입니다." });
     void router.push("/");
     return <></>;
   }

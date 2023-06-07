@@ -6,6 +6,9 @@ export const FETCH_BOARD = gql`
       _id
       writer
       title
+      user {
+        _id
+      }
       contents
       youtubeUrl
       likeCount
@@ -17,6 +20,14 @@ export const FETCH_BOARD = gql`
       }
       images
       createdAt
+    }
+  }
+`;
+
+export const FETCH_USER_LOGGEDIN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
     }
   }
 `;

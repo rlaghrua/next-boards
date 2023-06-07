@@ -7,6 +7,7 @@ export const Wrapper = tw.div`
   mr-[100px]
   ml-[100px]
   md:w-[800px] lg:w-[1024px]
+  pb-[30px]
 `;
 
 export const PencilIcon = styled.img``;

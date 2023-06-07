@@ -36,6 +36,7 @@ export default function Header() {
   const onClickLogout = async () => {
     client.clearStore();
     setAccessToken("");
+    router.push("/");
   };
 
   return (
@@ -61,9 +62,6 @@ export default function Header() {
             >
               boards
             </span>
-            <Link href="/shops" className="mr-5 hover:text-gray-400">
-              Shop
-            </Link>
             {data?.fetchUserLoggedIn._id ? null : (
               <Link href="/register" className="mr-5 hover:text-gray-400">
                 Signup
