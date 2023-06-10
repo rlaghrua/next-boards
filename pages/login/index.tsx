@@ -102,32 +102,14 @@ export default function LoginPage() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
               </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <div className="text-gray-500 dark:text-gray-300">
-                      Remember me
-                    </div>
-                  </div>
-                </div>
-                <Link
-                  href="/forgetpassword"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+              <div className="flex items-center justify-center">
+                <button
+                  className=" dark:text-white text-black bg-white hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-500 rounded-full py-2 px-5"
+                  onClick={onClickLogin}
                 >
-                  Forgot password?
-                </Link>
+                  Sign in
+                </button>
               </div>
-              <button className="w-full dark:text-white" onClick={onClickLogin}>
-                Sign in
-              </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
                 <Link

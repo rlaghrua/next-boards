@@ -57,9 +57,11 @@ export const ContentsLength = styled.div`
 export const Button = styled.button`
   width: 91px;
   height: 51px;
-  background-color: black;
+  background-color: gray;
   color: white;
   cursor: pointer;
 `;
 
-export const Star = styled(Rate)``;
+export const Star = tw(Rate)`
+  
+`;

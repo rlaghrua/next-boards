@@ -159,7 +159,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
           alert("일시적인 오류가 있습니다. 다시 시도해 주세요.");
           return;
         }
-        console.log(result.data?.createBoard._id);
         void router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error) {
         if (error instanceof Error) Modal.error({ content: error.message });

@@ -30,9 +30,13 @@ export default function BoardListUI(props: IBoardListUIProps) {
               .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
               .split("@#$%")
               .map((el) => (
-                <S.TextToken key={uuidv4()} isMatched={props.keyword === el}>
+                <span
+                  className="TextToken"
+                  key={uuidv4()}
+                  isMatched={props.keyword === el}
+                >
                   {el}
-                </S.TextToken>
+                </span>
               ))}
           </S.ColumnTitle>
           <S.ColumnBasic>{el.writer}</S.ColumnBasic>

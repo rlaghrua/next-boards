@@ -16,17 +16,9 @@ const CREATE_USER = gql`
     createUser(createUserInput: $createUserInput) {
       name
       _id
-      picture
     }
   }
 `;
-
-interface IFormData {
-  name: string;
-  email: string;
-  password: string;
-  passwordconfirm: string;
-}
 
 const schema = yup.object().shape({
   email: yup
@@ -49,11 +41,18 @@ const schema = yup.object().shape({
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[^\s]*$/,
       "알파벳, 숫자, 공백을 제외한 특수문자를 모두 포함해야 합니다!"
     ),
-  passwordconfirm: yup
+  password2: yup
     .string()
     .oneOf([yup.ref("password")], "비밀번호가 일치하지 않습니다.")
     .required("필수 입력 값입니다!"),
 });
+
+interface IFormData {
+  name: string;
+  email: string;
+  password2: string;
+  password: string;
+}
 
 export default function RegisterPage() {
   const [isopen, setIsopen] = useState(false);
@@ -66,6 +65,7 @@ export default function RegisterPage() {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
+
   const handleOk = () => {
     setIsopen(false);
     void router.push("/");
@@ -76,7 +76,7 @@ export default function RegisterPage() {
     void router.push("/");
   };
 
-  const onClickSubmit = async (data: IFormData) => {
+  const onClickSubmit = async (data: any) => {
     const result = await createUser({
       variables: {
         createUserInput: {
@@ -118,7 +118,7 @@ export default function RegisterPage() {
                     Your email
                   </div>
                   <input
-                    type="text"
+                    type="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     {...register("email")}
@@ -146,13 +146,13 @@ export default function RegisterPage() {
                     Confirm password
                   </div>
                   <input
-                    {...register("passwordconfirm")}
+                    {...register("password2")}
                     type="password"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                   <div style={{ color: "red" }}>
-                    {formState.errors.passwordconfirm?.message}
+                    {formState.errors.password2?.message}
                   </div>
                 </div>
                 <div>
@@ -170,15 +170,17 @@ export default function RegisterPage() {
                   </div>
                 </div>
 
-                <button
-                  style={{
-                    backgroundColor: formState.isValid ? "black" : "",
-                  }}
-                  type="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                >
-                  Create an account
-                </button>
+                <div className="flex items-center justify-center">
+                  <button
+                    style={{
+                      backgroundColor: formState.isValid ? "black" : "",
+                    }}
+                    type="submit"
+                    className="dark:text-white text-black bg-gray-200 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-500 rounded-full py-2 px-5"
+                  >
+                    Create an account
+                  </button>
+                </div>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{" "}
                   <Link

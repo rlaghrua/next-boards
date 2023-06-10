@@ -70,6 +70,7 @@ export const Button = styled.button`
   }
 `;
 
-export const TextToken = styled.span`
-  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
-`;
+// export const TextToken = styled.span`
+//   /* color: ${(props: ITextTokenProps) =>
+//     props.isMatched ? "red" : "black"}; */
+// `;

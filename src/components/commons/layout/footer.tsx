@@ -10,7 +10,7 @@ export default function Footer() {
               href="/"
               className="flex title-font font-medium items-center md:justify-start justify-center "
             >
-              <span className="ml-3 text-xl">PortFolio</span>
+              <span className="ml-3 text-xl span-White">PortFolio</span>
             </Link>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
               <Link
